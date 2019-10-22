@@ -7,6 +7,8 @@ Através do próprio site oficial ReactJS.org, descobri alguns pontos interessan
 
 Então, pelo fato de a instalação server side se resumir a baixar os pacotes via NPM e então subir o servidor com o node, decidi simplificar tudo e focar no que realmente interessa, o Front Side.
 
+**A aplicação foi construida com base em flexbox, o futuro da responsividade nos browsers. Focado primeiramente em mobile, o site funciona em todo e qualquer dispositivo. Testado no chrome, opera e Edge.**
+
 ## Como rodar a aplicação?
 
 Para executar a aplicação, é necessário apenas executar o arquivo index.html com um browser compatível com ES6(Como requerido na descrição da vaga).
