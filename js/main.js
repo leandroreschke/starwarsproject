@@ -2,7 +2,8 @@ var data = null;//guarda a resposta do servidor com os dados retornados do swapi
 
 // responsavel pela criação da interface dos filmes(Renderizado com React)
 function BuildUI(films){
-    let keyComponent = 0;
+    var divApp = document.getElementById('RootApp');   
+    var keyComponent = 1;
     var UIfilms = films
     .map(function(films) {
         return React.createElement('div', {className: "column is-one-quarter-tablet is-half-touch", key: keyComponent++},
@@ -28,7 +29,6 @@ function BuildUI(films){
             )
         );       
     });
-
     var rootElement =
         React.createElement('section', {className: ""}, 
         React.createElement('div', {className: "container"}, 
@@ -36,9 +36,8 @@ function BuildUI(films){
         React.createElement('div', {className:"column is-two-thirds-tablet is-four-fifths"},
         React.createElement('div', {className: "row is-mobile is-multiline"}, UIfilms))))
     );
-    var divApp = document.getElementById('RootApp');
+    divApp.classList.add("animate");
     ReactDOM.render(rootElement, divApp);
-    setTimeout(function(){divApp.style.opacity = "1";},1500);
 }
 
 //função responsavel pelo get das informações do swapi
@@ -48,33 +47,37 @@ function GatherSWInformation(){
     request.open('GET', 'https://swapi.co/api/films/', true)//acessp ao api
 
     request.onload = function() {
+        console.log(this.status);
         if(this.status === 500 || this.status === 404){
-            displayError();//ja aconteceu do site estar fora do ar, mostra um botão para tentar pesquisar novamente
-        }else{
+            displayError(this.status);//ja aconteceu do site estar fora do ar, mostra um botão para tentar pesquisar novamente
+        }else{            
+            var divApp = document.getElementById('RootApp');   
+
+            divApp.style.opacity = "0";
             //se trouxe dados do api, organiza os dados e monta a UI
             var reorderedFilms = new Array();
             data = JSON.parse(this.response);    
-            console.log(data);
             reorderedFilms = orderMovie(0);
-            console.log(reorderedFilms);
             BuildUI(reorderedFilms);   
         }
     }
-
+    request.onreadystatechange  = function(){
+        displayError(this.status);
+    }
     // Send request
     request.send()
 }
 //em caso do site estar fora do ar, mostra na tela uma mensagem para o usuario tentar pesquisar novamente
-function displayError(){
+function displayError(status){
     var rootElement =
         React.createElement('div', {className: "card", style:{background: "#ef2e55", padding:"0.5em", height:"100%"}},           
             React.createElement('div', {className: "card-content is-paddingless"},               
                 React.createElement('div', {className: "content"}, 
-                    React.createElement('p', {className: "title is-4 has-text-centered has-text-white"}, "Não foi possível buscar os filmes. Talvez o site esteja fora do ar")
+                    React.createElement('p', {className: "title is-4 has-text-centered has-text-white"}, "Não foi possível buscar os filmes. Erro: " + status)
                 )  
             ),
             React.createElement('div', {className: "card-footer", style:{}},
-                React.createElement('p', {className: "card-footer-item has-text-white"}, React.createElement('button', {onClick:() => GatherSWInformation(),className: "button is-light"}, "Buscar Novamente")
+                React.createElement('p', {className: "card-footer-item has-text-white"}, React.createElement('button', {onClick:() => GatherSWInformation(),className: "button is-danger is-light"}, "Buscar Novamente")
                 )
             )
         );
@@ -126,7 +129,7 @@ function Initialization(){
 //uma funçãozinha para eu trocar os dados do modal, quando voce clica em um filme
 function populateModal(title, content, image){
     document.getElementById("modal-title").innerHTML = title;
-    document.getElementById("modal-content").innerHTML = content;
+    document.getElementById("modal-content").innerHTML = "<p class='title is-4 has-text-white'>" + content + "</p>";
     document.getElementById("modal-film").classList.add("is-active");
 }
 
