@@ -9,10 +9,14 @@
                 font-family: starwars;
                 src: url(fonts/starwars.woff);
             }
-            #RootApp {
-				transition: all 1s;
+            .animate {
+				-webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+                -moz-animation: fadein 2s; /* Firefox < 16 */
+                -ms-animation: fadein 2s; /* Internet Explorer */
+                -o-animation: fadein 2s; /* Opera < 12.1 */
+                animation: fadein 2s;
 			}
-            .hero-head, .hero-foot, .modal-card-title{
+            .hero-head, .hero-foot, .modal-card-title, .starwars{
                 font-family: 'starwars';
             }
             html, body{
@@ -36,18 +40,24 @@
                             </p>                             
                         </div>
                         <div class="column is-full-touch">
-                            <div class="select">
-                                <div class="field has-addons has-addons-centered">
+                            <div class="field has-addons has-addons-centered">
+                                <p class="control">
                                     <a class="button is-static">
-                                        ordernação:
+                                        ordem:
                                     </a>
-                                    <p class="control">
-                                        <select onchange="changeOrder(this.value);">
-                                            <option value="0" selected>Cronológico</option>
-                                            <option value="1">Lançamento</option>                                                
-                                        </select>
-                                    </p>
-                                </div>                                  
+                                </p>
+                                <p class="control">
+                                    <div class="select is-fullwidth">
+                                    
+                                        
+                                        
+                                            <select onchange="changeOrder(this.value);">
+                                                <option value="0" selected>Cronológico</option>
+                                                <option value="1">Lançamento</option>                                                
+                                            </select>
+                                        
+                                    </div>    
+                                </p>                              
                             </div>
                         </div>
                         <div class="column is-full-touch">
@@ -59,9 +69,9 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-body" style="height:calc(100vh - 94px);overflow: auto;">
-                <div class="is-clipped" style="opacity:0;" id="RootApp">
-                    <div class="control is-loading"></div>
+            <div class="hero-body" style="height:calc(100vh - 94px);overflow: auto;">               
+                <div class="is-clipped" id="RootApp">
+                    <p class="title is-1 has-text-centered starwars loadingwars" data-text="it's loading…">it's loading…</p>
                 </div>
             </div>
             <div class="hero-foot is-block">
@@ -73,22 +83,22 @@
                 </footer>
             </div>
         </section>
-        <div id="modal-film" class="modal">
-            <div class="modal-background"></div>
-            <div id="modalcard" class="modal-card">
-                <header class="modal-card-head">
-                   
-                    <p id="modal-title" class="modal-card-title"></p>
-                    <button class="delete is-large" onclick="document.getElementById('modal-film').classList.remove('is-active');"></button>
-                </header>
-                <section id="modal-content" class="modal-card-body">
-                <!-- Content ... -->
-                </section>
-             
-            </div>
-        </div>    
-        
-        
+        <div class="container">
+            <div id="modal-film" class="modal is-mobile">
+                <div class="modal-background"></div>
+                <div id="modalcard" class="modal-card">
+                    <header class="modal-card-head">
+                    
+                        <p id="modal-title" class="modal-card-title"></p>
+                        <button class="delete is-large" onclick="document.getElementById('modal-film').classList.remove('is-active');"></button>
+                    </header>
+                    <section id="modal-content" class="modal-card-body">
+                    <!-- Content ... -->
+                    </section>
+                
+                </div>
+            </div>    
+        </div> 
         <script src="js/react.js"></script>
         <script src="js/react-dom.js"></script>
         <script src="js/main.js"></script>
