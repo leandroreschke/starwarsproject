@@ -1,0 +1,96 @@
+<!-- By Leandro Reschke for IBM -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+        <link rel="stylesheet" href="css/starwars.css">
+        <style>
+            @font-face {
+                font-family: starwars;
+                src: url(fonts/starwars.woff);
+            }
+            #RootApp {
+				transition: all 1s;
+			}
+            .hero-head, .hero-foot, .modal-card-title{
+                font-family: 'starwars';
+            }
+            html, body{
+                overflow:hidden;
+            }
+        </style>
+    </head>
+    <body class="is-clipped" background="images/background.png" style="min-height:100vh;background-repeat: repeat;" onLoad="Initialization();">
+        <section class="hero">
+            <div class="hero-head">  
+                <div class="container">
+                    <div class="row is-vcentered is-multiline">                    
+                        <div class="column is-full-touch">
+                            <p class="title is-size-1 has-text-warning has-text-centered">
+                                Star Wars
+                            </p>                               
+                        </div>
+                        <div class="column is-full-touch">
+                            <p class="subtitle is-size-4 has-text-warning has-text-centered">
+                                Film Catalog
+                            </p>                             
+                        </div>
+                        <div class="column is-full-touch">
+                            <div class="select">
+                                <div class="field has-addons has-addons-centered">
+                                    <a class="button is-static">
+                                        ordernação:
+                                    </a>
+                                    <p class="control">
+                                        <select onchange="changeOrder(this.value);">
+                                            <option value="0" selected>Cronológico</option>
+                                            <option value="1">Lançamento</option>                                                
+                                        </select>
+                                    </p>
+                                </div>                                  
+                            </div>
+                        </div>
+                        <div class="column is-full-touch">
+                            <audio id="audioplayer" controls>
+                                    <source src="audio/starwars.weba">
+                                    Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-body" style="height:calc(100vh - 94px);overflow: auto;">
+                <div class="is-clipped" style="opacity:0;" id="RootApp">
+                    <div class="control is-loading"></div>
+                </div>
+            </div>
+            <div class="hero-foot is-block">
+                <footer style="background: rgba(54, 54, 54, 0.3)" class="footer is-paddingless">
+                    <p class="has-text-centered has-text-warning">
+                        Star Wars Film Catalog by <a href="https://leandroreschke.com">Leandro Reschke</a>. The source code is available at
+                        my <a href="https://github.com/leandroreschke/starwarsproject">Github</a>.
+                    </p>
+                </footer>
+            </div>
+        </section>
+        <div id="modal-film" class="modal">
+            <div class="modal-background"></div>
+            <div id="modalcard" class="modal-card">
+                <header class="modal-card-head">
+                   
+                    <p id="modal-title" class="modal-card-title"></p>
+                    <button class="delete is-large" onclick="document.getElementById('modal-film').classList.remove('is-active');"></button>
+                </header>
+                <section id="modal-content" class="modal-card-body">
+                <!-- Content ... -->
+                </section>
+             
+            </div>
+        </div>    
+        
+        
+        <script src="js/react.js"></script>
+        <script src="js/react-dom.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
