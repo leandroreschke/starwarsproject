@@ -13,7 +13,14 @@ Então, pelo fato de a instalação server side se resumir a baixar os pacotes v
 
 Para executar a aplicação, é necessário apenas executar o arquivo index.html com um browser compatível com ES6(Como requerido na descrição da vaga).
 
+## Teste unitário
 
+Para ter certeza de que o programa está funcionando corretamente, vou listar os passos que a aplicação faz. Quando o usuario acessa o site, o mesmo automaticamente vai atras do star wars api para procurar os dados, caso o site esteja fora do ar ou algum erro aconteça, o mesmo vai mostrar uma mensagem em vermelho explicando o que aconteceu e vai fornecer um botão para o usuario procurar as informações novamente. O site, ao ser redimensionado ou visto de um aparelho mobile ou table, vai se auto adequar a tela e proporção do dispositivo. 
 
+Por questões de segurança e para evitar a invasão do espaço do usuario, os browsers atuais não permite que seja executado um audio ou video sem que o usuario tenha pelo menos uma vez interagido com o site que abriu, por este motivo, a musica do tema starwars toca apenas depois de haver esta interação.
+
+No topo do site, é esperado que o usuario possa pausar a musica e alterar o volume. Assim como, mudar a ordenação dos resultados, já que entre os fãs de star wars, existe algumas ordenações corretas, dentre elas coloquei duas, por lançamento e por ordem cronologica de tempo definida dentro do universo star wars.
+
+Ao clicar em um filme, é esperado que abra uma janela modal para o usuario ver na integra a descrição do filme, ja que por questões de experiencia do usuario ele apenas pode ver um trecho na listagem dos filmes
 
 
