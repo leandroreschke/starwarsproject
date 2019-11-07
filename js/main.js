@@ -73,7 +73,7 @@ function displayError(status){
         React.createElement('div', {className: "card", style:{background: "#ef2e55", padding:"0.5em", height:"100%"}},           
             React.createElement('div', {className: "card-content is-paddingless"},               
                 React.createElement('div', {className: "content"}, 
-                    React.createElement('p', {className: "title is-4 has-text-centered has-text-white"}, "Não foi possível buscar os filmes. O site está fora do ar.)
+                    React.createElement('p', {className: "title is-4 has-text-centered has-text-white"}, "Não foi possível buscar os filmes. O site está fora do ar.")
                 )  
             ),
             React.createElement('div', {className: "card-footer", style:{}},
