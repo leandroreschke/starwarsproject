@@ -44,7 +44,7 @@ function BuildUI(films){
 function GatherSWInformation(){
     var request = new XMLHttpRequest()
 
-    request.open('GET', 'https://swapi.co/api/films/', true)//acessp ao api
+    request.open('GET', 'https://swapi.dev/api/films/', true)//acessp ao api
 
     request.onload = function() {
         console.log(this.status);
